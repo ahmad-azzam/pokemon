@@ -17,7 +17,7 @@ export default function Card({ el }) {
                 method: 'get',
                 url: data.species.url
             })
-            setImage(data.sprites.front_default)
+            setImage(data.sprites.other.dream_world.front_default)
             setTypes(data.types)
             setColor(species.color.name)
         } catch (err) {
@@ -57,8 +57,8 @@ export default function Card({ el }) {
                                     }
 
                                 </div>
-                                <div className="mt-auto">
-                                    <img className="w-full h-full object-cover object-center" src={image} alt="pokemon" />
+                                <div className="mt-auto ml-5">
+                                    <img className="w-20" src={image} alt="pokemon" />
                                 </div>
                             </div>
                         </div>
