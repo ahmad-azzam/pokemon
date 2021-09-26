@@ -56,8 +56,15 @@ export default function Detail() {
     }, [])
     return (
         <>
-            <div className="flex flex-col h-screen">
-                <div className="bg-green-400 h-2/5">
+            <div className="flex flex-col h-screen mb-14">
+                <div
+                    className={
+                        color === 'green' ? 'bg-green-400 h-2/5' :
+                            color === 'red' ? 'bg-red-400 h-2/5' :
+                                color === 'blue' ? 'bg-blue-400 h-2/5' :
+                                    'bg-yellow-900 h-2/5'
+                    }
+                >
                     <div className="flex justify-between p-5">
                         <div className="text-white capitalize font-bold text-4xl">
                             <h1>{name}</h1>
@@ -65,7 +72,13 @@ export default function Detail() {
                                 {
                                     types.map(el => {
                                         return (
-                                            <div className="capitalize px-3 py-1  text-center rounded-xl bg-green-300 text-sm text-white shadow-xl">
+                                            <div className={
+                                                color === 'green' ? 'capitalize px-3 py-1  text-center rounded-xl bg-green-300 text-sm text-white shadow-xl' :
+                                                    color === 'red' ? 'capitalize px-3 py-1  text-center rounded-xl bg-red-300 text-sm text-white shadow-xl' :
+                                                        color === 'blue' ? 'capitalize px-3 py-1  text-center rounded-xl bg-blue-300 text-sm text-white shadow-xl' :
+                                                            'capitalize px-3 py-1  text-center rounded-xl bg-yellow-700 text-sm text-white shadow-xl'
+                                            }
+                                            >
                                                 {el.type.name}
                                             </div>
                                         )
@@ -74,7 +87,11 @@ export default function Detail() {
                             </div>
                         </div>
                         <div className="text-white font-bold text-2xl flex items-center">
-                            <h1>#00{id}</h1>
+                            <h1>
+                                {
+                                    id < 10 ? `#00${id}` : `#0${id}`
+                                }
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -138,10 +155,10 @@ export default function Detail() {
                                 isBase && <Base stats={stats} />
                             }
                             {
-                                isLocation && <Location data={location} />
+                                isLocation && <Location data={location} color={color} />
                             }
                             {
-                                isMoves && <Moves data={moves} />
+                                isMoves && <Moves data={moves} color={color} />
                             }
 
                         </div>
